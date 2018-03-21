@@ -1,0 +1,54 @@
+{
+  "name": "csp-create",
+  "productName": "csp-create",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "author": "Spaceface16518 <33424649+Spaceface16518@users.noreply.github.com>",
+  "main": "out/main.js",
+  "scripts": {
+    "start": "node .",
+    "package": "electron-forge package",
+    "test": "node.",
+    "prestart": "yarn run build",
+    "pretest": "yarn run build",
+    "build": ""
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.8.4",
+    "fakefile": "^0.0.9"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "csp_create"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "cspcreate",
+        "name": "cspcreate"
+      }
+    }
+  }
+}
