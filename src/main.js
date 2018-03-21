@@ -1,6 +1,11 @@
-const {app, BrowserWindow, ipcMain, Menu} = require('electron')
+const {app, BrowserWindow, ipcMain, Menu, dialog, autoUpdater} = require('electron')
 const fs = require('fs')
 
+
+const server = 'https://hazel-server-nieaeytlhz.now.sh'
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+
+autoUpdater.setFeedURL(feed)
 
 let mainWindow; // Declare as a global variable so that it can be accessed and isn't garbage collected
 
