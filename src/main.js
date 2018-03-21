@@ -11,7 +11,7 @@ const createWindow = () => {
     height: 600,
   });
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`); // Load index page
+  mainWindow.loadURL(`${__dirname}/index.html`); // Load index page
 
   // Opens the DevTools
 /*  mainWindow.webContents.openDevTools();*/
