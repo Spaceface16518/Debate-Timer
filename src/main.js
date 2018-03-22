@@ -1,4 +1,9 @@
-import {app, BrowserWindow, ipcMain, Menu} from 'electron';
+import {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Menu
+} from 'electron';
 import * as fs from 'fs';
 
 let mainWindow; // Declare as a global variable so that it can be accessed and isn't garbage collected
@@ -13,7 +18,7 @@ const createWindow = () => {
   mainWindow.loadURL(`${__dirname}/index.html`); // Load index page
 
   // Opens the DevTools
-/*  mainWindow.webContents.openDevTools();*/
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -24,6 +29,7 @@ const createWindow = () => {
 
 
 app.on('ready', createWindow); // Called after electron is done initializing
+
 ipcMain.on('preset', (event, args) => {
   event.sender.send(args)
 })
