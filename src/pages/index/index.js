@@ -1,8 +1,10 @@
-const electron = require('electron')
-const { ipcRenderer } = require('electron')
+//import * as $ from "jquery"; // May not be needed
+import * as electron from 'electron';
+import {ipcRenderer} from 'electron';
+import { resolve } from 'path';
 const BrowserWindow = electron.remote.BrowserWindow
-const path = require('path')
 
+// The two child windows
 let metaWin;
 let timerWin;
 
@@ -22,7 +24,7 @@ function createTimerWindow() {
     vibrancy: 'popover'
   })
 
-  timerWin.loadURL(path.resolve('./timer.html'))
+  timerWin.loadURL(resolve('./timer.html'))
 
   timerWin.on('closed', () => {
     timerWin = null
@@ -38,10 +40,9 @@ function createMetaWindow() {
       resizable: false
     });
 
-    metaWin.loadURL(path.resolve('./meta.html'));
+    metaWin.loadURL(resolve('./meta.html'));
 
     metaWin.on("closed", () => {
       metaWin = null;
     });
 }
-
