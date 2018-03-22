@@ -1,9 +1,3 @@
-
-
-const server = 'https://hazel-server-nieaeytlhz.now.sh'
-const feed = `${server}/update/${process.platform}/${app.getVersion()}`
-
-autoUpdater.setFeedURL(feed)
 import {app, BrowserWindow, ipcMain, Menu} from 'electron';
 import * as fs from 'fs';
 
