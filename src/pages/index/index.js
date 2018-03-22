@@ -46,3 +46,7 @@ function createMetaWindow() {
       metaWin = null;
     });
 }
+
+function sendPreset(epocTime) {
+  ipcRenderer.send('preset', epocTime)
+}

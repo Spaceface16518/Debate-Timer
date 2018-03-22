@@ -24,6 +24,9 @@ const createWindow = () => {
 
 
 app.on('ready', createWindow); // Called after electron is done initializing
+ipcMain.on('preset', (event, args) => {
+  event.sender.send(args)
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
