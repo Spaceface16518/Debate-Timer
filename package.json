@@ -7,7 +7,6 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "node .",
-    "package": "electron-forge package",
     "test": "node.",
     "prestart": "yarn run build",
     "pretest": "yarn run build",
@@ -17,10 +16,19 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^1.8.4",
-    "fakefile": "^0.0.9",
     "fs": "^0.0.1-security",
     "jquery": "^3.3.1",
     "path": "^0.12.7"
   },
-  "config": {}
+  "config": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browserify": "^16.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "fakefile": "^0.0.9",
+    "uglify": "^0.1.5"
+  }
 }
