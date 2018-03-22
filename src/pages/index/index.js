@@ -21,7 +21,8 @@ function createTimerWindow() {
     center: false,
     frame: false,
     hasShadow: true,
-    vibrancy: 'popover'
+    vibrancy: 'popover',
+    alwaysOnTop: true
   })
 
   timerWin.loadURL(resolve('./timer.html'))
