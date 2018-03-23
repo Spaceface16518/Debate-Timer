@@ -1,14 +1,15 @@
-//import * as $ from "jquery"; // May not be needed
+// Import * as $ from "jquery"; // May not be needed
 import * as electron from 'electron';
 import {ipcRenderer} from 'electron';
-import { resolve } from 'path';
-const BrowserWindow = electron.remote.BrowserWindow
+import {resolve} from 'path';
+const BrowserWindow = electron.remote.BrowserWindow;
 
 // The two child windows
 let metaWin;
 let timerWin;
 
 function createTimerWindow() {
+  metaWin = null;
   timerWin = new BrowserWindow({
     width: 400,
     height: 200,
@@ -22,32 +23,33 @@ function createTimerWindow() {
     frame: false,
     hasShadow: true,
     vibrancy: 'popover',
-    alwaysOnTop: true
-  })
+    alwaysOnTop: true,
+  });
 
-  timerWin.loadURL(resolve('./timer.html'))
+  timerWin.loadURL(resolve('./timer.html'));
 
   timerWin.on('closed', () => {
-    timerWin = null
-  })
+    timerWin = null;
+  });
 }
 
 function createMetaWindow() {
-    metaWin = new BrowserWindow({
-      width: 800,
-      height: 400,
-      frame: true,
-      hasShadow: false,
-      resizable: false
-    });
+  timerWin = null;
+  metaWin = new BrowserWindow({
+    width: 800,
+    height: 400,
+    frame: true,
+    hasShadow: false,
+    resizable: false,
+  });
 
-    metaWin.loadURL(resolve('./meta.html'));
+  metaWin.loadURL(resolve('./meta.html'));
 
-    metaWin.on("closed", () => {
-      metaWin = null;
-    });
+  metaWin.on('closed', () => {
+    metaWin = null;
+  });
 }
 
 function sendPreset(epocTime) {
-  ipcRenderer.send('preset', epocTime)
+  ipcRenderer.send('preset', epocTime);
 }
