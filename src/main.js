@@ -2,11 +2,12 @@ import {
   app,
   BrowserWindow,
   ipcMain,
-  Menu
+  Menu,
 } from 'electron';
+import template from './menu';
 import * as fs from 'fs';
 
-let mainWindow; // Declare as a global variable so that it can be accessed and isn't garbage collected
+let mainWindow; // Define as global
 
 const createWindow = () => {
   // Create the browser window
@@ -27,12 +28,14 @@ const createWindow = () => {
   });
 };
 
+let menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
 
 app.on('ready', createWindow); // Called after electron is done initializing
 
 ipcMain.on('preset', (event, args) => {
-  event.sender.send(args)
-})
+  event.sender.send(args);
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -43,7 +46,11 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  // Special consideration of MacOS (darwin); creates a new window if app is still active but no windows are open and dock icon is clicked
+  /*
+    * Special consideration of MacOS (darwin)
+    * creates a new window if app
+    * is still active but no windows are open and dock icon is clicked
+    */
   if (mainWindow === null) {
     createWindow();
   }
