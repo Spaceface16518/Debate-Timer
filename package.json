@@ -10,7 +10,8 @@
     "test": "node.",
     "prestart": "yarn run build",
     "pretest": "yarn run build",
-    "build": ""
+    "build": "",
+    "lint": "node_modules/.bin/eslint ."
   },
   "keywords": [],
   "license": "MIT",
