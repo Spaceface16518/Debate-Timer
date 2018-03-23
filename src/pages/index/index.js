@@ -1,13 +1,29 @@
-// Import * as $ from "jquery"; // May not be needed
+import * as $ from 'jquery'; // May not be needed
 import * as electron from 'electron';
 import {ipcRenderer} from 'electron';
 import {resolve} from 'path';
+import * as fs from 'fs';
 const BrowserWindow = electron.remote.BrowserWindow;
 
 // The two child windows
 let metaWin;
 let timerWin;
 
+$(document).ready(function() {
+  $('.createTimerWindow').click(function() {
+    createTimerWindow();
+    fs.appendFile('./.appcache.log', `[${Date.now()}]: created timer window\n`,
+      (err) => {
+        console.error(err);
+      });
+  });
+
+  $('.createMetaWindow').click(function() {
+    createMetaWindow();
+  });
+});
+
+// FUNCTIONS
 function createTimerWindow() {
   metaWin = null;
   timerWin = new BrowserWindow({
@@ -50,6 +66,7 @@ function createMetaWindow() {
   });
 }
 
-function sendPreset(epocTime) {
-  ipcRenderer.send('preset', epocTime);
+// NOTE: duration should be in epoc time
+function sendPreset(duration) {
+  ipcRenderer.send('preset', duration);
 }
