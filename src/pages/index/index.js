@@ -1,25 +1,31 @@
-import * as $ from 'jquery'; // May not be needed
+import * as $ from 'jquery';
 import * as electron from 'electron';
 import {ipcRenderer} from 'electron';
 import {resolve} from 'path';
-import * as fs from 'fs';
+import {log} from './logger';
 const BrowserWindow = electron.remote.BrowserWindow;
 
+let preset; // The current preset selected
 // The two child windows
 let metaWin;
 let timerWin;
 
 $(document).ready(function() {
-  $('.createTimerWindow').click(function() {
+  $('.timerWindow').click(function() {
     createTimerWindow();
-    fs.appendFile('./.appcache.log', `[${Date.now()}]: created timer window\n`,
-      (err) => {
-        console.error(err);
-      });
+    log('created timer window');
   });
 
-  $('.createMetaWindow').click(function() {
+  $('.metaWindow').click(function() {
     createMetaWindow();
+  });
+
+  $('.preset').click(function(event) {
+    let text = event.target.innerText;
+    $('.currentPreset').removeClass('currentPreset');
+    let newPreset = document.getElementById(event.target.id);
+    newPreset.setAttribute('class', 'currentPreset');
+    preset = parseInt(text); // "preset" is the global variable
   });
 });
 
@@ -27,8 +33,8 @@ $(document).ready(function() {
 function createTimerWindow() {
   metaWin = null;
   timerWin = new BrowserWindow({
-    width: 400,
-    height: 200,
+    width: 200,
+    height: 100,
     minimizable: false,
     maximizable: false,
     maxHeight: 300,
@@ -43,6 +49,8 @@ function createTimerWindow() {
   });
 
   timerWin.loadURL(resolve('./timer.html'));
+
+  sendPreset(preset);
 
   timerWin.on('closed', () => {
     timerWin = null;
