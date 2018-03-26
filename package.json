@@ -7,7 +7,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "node .",
-    "test": "node.",
+    "test": "node .",
     "prestart": "yarn run build",
     "pretest": "yarn run build",
     "build": "",
@@ -21,7 +21,38 @@
     "jquery": "^3.3.1",
     "path": "^0.12.7"
   },
-  "config": {},
+  "babel": {
+    "presets": [
+      ["env", {
+        "targets": {
+          "node": "current"
+        }
+      }]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "google",
+    "env": {
+      "es6": true,
+      "jquery": true,
+      "node": true,
+      "browser": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2015,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "arrowFunctions": true,
+        "impliedStrict": false,
+        "modules": true
+      }
+    },
+    "rules": {
+      "require-jsdoc": "off",
+      "comma-dangle": "off",
+      "quotes": "warn"
+    }
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
