@@ -1,8 +1,8 @@
 {
   "name": "csp-create",
-  "productName": "csp-create",
+  "productName": "Hexane",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A debate timer.",
   "author": "Spaceface16518 <33424649+Spaceface16518@users.noreply.github.com>",
   "main": "dist/main.js",
   "scripts": {
