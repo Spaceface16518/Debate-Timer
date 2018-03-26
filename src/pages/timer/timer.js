@@ -18,35 +18,37 @@ ipcRenderer.on('preset', (event, args) => {
   updateTimeView(timeLeft);
 });
 
-$('.startButton').click(function() {
-  startTimer(duration);
-});
+$(document).ready(function() {
+  $('.startButton').click(function() {
+    startTimer(duration);
+  });
 
-$('.stopButton').click(() => {
-  stopTimer();
-});
+  $('.stopButton').click(() => {
+    stopTimer();
+  });
 
-// Increases the time on the timer
-$('.up').click(function() {
-  stopTimer(); // Stop the timer before making any changes
-  duration = Math.round(duration / 1000) * 1000;
-  duration += 1000;
-  timeLeft = duration;
-  updateTimeView(timeLeft);
-});
+  // Increases the time on the timer
+  $('.up').click(function() {
+    stopTimer(); // Stop the timer before making any changes
+    duration = Math.round(duration / 1000) * 1000;
+    duration += 1000;
+    timeLeft = duration;
+    updateTimeView(timeLeft);
+  });
 
 
-$('.down').click(function() {
-  stopTimer(); // Stop the timer before making any changes
-  duration = Math.round(duration / 1000) * 1000;
-  duration -= 1000;
-  timeLeft = duration;
-  updateTimeView(timeLeft);
-});
+  $('.down').click(function() {
+    stopTimer(); // Stop the timer before making any changes
+    duration = Math.round(duration / 1000) * 1000;
+    duration -= 1000;
+    timeLeft = duration;
+    updateTimeView(timeLeft);
+  });
 
-// Close the window; this is because there are no control buttons
-$('.exit').click(function() {
-  remote.getCurrentWindow().close();
+  // Close the window; this is because there are no control buttons
+  $('.exit').click(function() {
+    remote.getCurrentWindow().close();
+  });
 });
 
 // Turns epoc time into a time string (mm:ss.sss)
