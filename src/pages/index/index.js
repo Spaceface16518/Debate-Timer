@@ -3,6 +3,7 @@ import * as electron from 'electron';
 import {ipcRenderer} from 'electron';
 import {resolve} from 'path';
 import {log} from './logger';
+log('Renderer process started: index');
 const BrowserWindow = electron.remote.BrowserWindow;
 
 let preset; // The current preset selected

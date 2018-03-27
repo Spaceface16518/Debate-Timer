@@ -2,7 +2,7 @@ import {app, BrowserWindow, ipcMain, Menu} from 'electron';
 import {log} from './logger';
 import template from './menu';
 import {resolve} from 'path';
-
+log('Main process started: main');
 let mainWindow; // Define as global
 
 const createWindow = () => {
