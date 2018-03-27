@@ -16,6 +16,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "3",
     "electron": "^1.8.4",
     "fs": "^0.0.1-security",
     "jquery": "^3.3.1",
@@ -23,11 +24,14 @@
   },
   "babel": {
     "presets": [
-      ["env", {
-        "targets": {
-          "node": "current"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
         }
-      }]
+      ]
     ]
   },
   "eslintConfig": {

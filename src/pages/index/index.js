@@ -1,4 +1,4 @@
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import * as electron from 'electron';
 import {ipcRenderer} from 'electron';
 import {resolve} from 'path';
